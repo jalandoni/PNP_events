@@ -1,0 +1,44 @@
+<button type="button" class="btn btn-danger" style="float:right" (click)="logout()">Logout</button>
+<button data-toggle="modal" data-target="#myModal" class="btn mr-3" id="addEventBtn"
+    style="float:right; background-color: blue; color:white">Add Event</button>
+
+<br>
+<br>
+
+<div class="container">
+    <div *ngFor="let event of events" class="jumbotron pb-5"
+        style="border-top: blue solid 15px; border-bottom: blue solid 15px">
+        <div class="jumbotron col-sm-12 events-list">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h2>{{event.name}}</h2>
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-primary" style="float: right;" (click)="viewEvent(event)">View Event
+                        Details</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- The Modal -->
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-top:blue solid 15px; border-bottom: blue solid 15px">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add Event Form</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <app-addevent (event)="addEvent($event)"></app-addevent>
+            </div>
+        </div>
+    </div>
+</div>

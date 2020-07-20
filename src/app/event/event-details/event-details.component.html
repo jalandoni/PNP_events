@@ -1,0 +1,47 @@
+<div *ngIf="event" class="jumbotron pointable">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-8">
+        <B><h2>Event Title : {{event?.name}}</h2></B>
+      </div>
+      <div class="col-sm-4">
+        <button  type="button" class="btn btn-primary" style="float:right" (click)="viewList()">View Events List</button>
+      </div>
+    </div>
+  </div>
+<div class="event-body">
+<div class="body-content" >
+  <div class="row ml-1">
+    <span><b> Category : </b>{{event?.category}}</span>
+  </div>
+  <br>
+ 
+
+  <div class="row ml-1" *ngIf="event?.speaker">
+    <span><b> Speaker : </b>{{event?.speaker}}</span>
+  </div>
+  <br>
+ 
+
+  <div class="row ml-1" *ngIf="event?.emcee">
+    <span><b> Emcee : </b>{{event?.emcee}}</span>
+  </div>
+  <br>
+
+
+  <div class="row ml-1">
+    <span><b> Time : </b>{{event?.time}}</span>
+  </div>
+  <br>
+  <br>
+  
+    <app-participants-list [participants]= 'event?.participants'
+    (addParticipant)="addParticipants($event)"
+    ></app-participants-list>
+</div>
+</div>
+</div>
+<div  *ngIf="!event" class="jumbotron pointable">
+  <div class="spinner-border text-primary">
+  </div>
+</div>
